@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword # Root password
+      MYSQL_DATABASE: grazer # Default database name
+      MYSQL_USER: user # Database user
+      MYSQL_PASSWORD: password # Database user's password
+    ports:
+      - "3307:3306" # Expose port 3307 on the host and map it to MariaDB's port 3306
+    volumes:
+      - db_data_taskapp:/var/lib/mysql # Persist data in a Docker volume
+
+volumes:
+  db_data_taskapp:
